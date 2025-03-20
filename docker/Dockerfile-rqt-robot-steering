@@ -4,7 +4,7 @@ FROM ros:${ROS_DISTRO}
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         ros-${ROS_DISTRO}-rqt-robot-steering \
     && rm -rf /var/lib/apt/lists/*
 

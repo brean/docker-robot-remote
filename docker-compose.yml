@@ -1,10 +1,7 @@
 services:
   ds4:
     # Sony Playstation DualShock 4 controller
-    image: brean/ds4-ros2:jazzy_001
-    build:
-      context: ./ds4/
-      dockerfile: ./Dockerfile
+    image: brean/ds4-ros2:humble_001
     privileged: True
     volumes:
       - /dev:/dev
@@ -14,24 +11,24 @@ services:
 
   teleop:
     # keyboard control
-    image: brean/teleop:jazzy_001
+    image: brean/teleop:humble_001
     build:
       context: ./docker
       dockerfile: ./Dockerfile-teleop
       args:
-        - ROS_DISTRO=jazzy
+        - ROS_DISTRO=humble
     environment:
       - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
     network_mode: host
 
   ui:
     # robot-steering user interface
-    image: brean/rqt_robot_steering:jazzy_001
+    image: brean/rqt_robot_steering:humble_001
     build:
       context: ./docker
       dockerfile: ./Dockerfile-rqt-robot-steering
       args:
-        - ROS_DISTRO=jazzy
+        - ROS_DISTRO=humble
     environment:
       - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
       - DISPLAY=$DISPLAY
@@ -42,12 +39,12 @@ services:
 
   rviz:
     # robot-steering user interface
-    image: brean/rviz2:jazzy_001
+    image: brean/rviz2:humble_001
     build:
       context: ./docker
       dockerfile: ./Dockerfile-rviz2
       args:
-        - ROS_DISTRO=jazzy
+        - ROS_DISTRO=humble
     environment:
       - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
       - DISPLAY=$DISPLAY
