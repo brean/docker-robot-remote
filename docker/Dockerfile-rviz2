@@ -1,0 +1,11 @@
+ARG ROS_DISTRO
+FROM ros:${ROS_DISTRO}
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        ros-${ROS_DISTRO}-rviz2 \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["ros2", "run", "rviz2", "rviz2"]

@@ -39,3 +39,19 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - /dev/dri:/dev/dri:ro
     network_mode: host
+
+  rviz:
+    # robot-steering user interface
+    image: brean/rviz2:jazzy_001
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile-rviz2
+      args:
+        - ROS_DISTRO=jazzy
+    environment:
+      - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /dev/dri:/dev/dri:ro
+    network_mode: host
