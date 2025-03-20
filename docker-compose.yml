@@ -1,0 +1,41 @@
+services:
+  ds4:
+    # Sony Playstation DualShock 4 controller
+    image: brean/ds4-ros2:jazzy_001
+    build:
+      context: ./ds4/
+      dockerfile: ./Dockerfile
+    privileged: True
+    volumes:
+      - /dev:/dev
+    environment:
+      - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
+    network_mode: host
+
+  teleop:
+    # keyboard control
+    image: brean/teleop:jazzy_001
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile-teleop
+      args:
+        - ROS_DISTRO=jazzy
+    environment:
+      - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
+    network_mode: host
+
+  ui:
+    # robot-steering user interface
+    image: brean/rqt_robot_steering:jazzy_001
+    build:
+      context: ./docker
+      dockerfile: ./Dockerfile-rqt-robot-steering
+      args:
+        - ROS_DISTRO=jazzy
+    environment:
+      - ROS_DOMAIN_ID=$ROS_DOMAIN_ID
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - /dev/dri:/dev/dri:ro
+    network_mode: host

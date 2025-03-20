@@ -1,0 +1,11 @@
+ARG ROS_DISTRO
+FROM ros:${ROS_DISTRO}
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends \
+        ros-${ROS_DISTRO}-teleop-twist-keyboard \
+    && rm -rf /var/lib/apt/lists/*
+
+CMD ["ros2", "run", "teleop_twist_keyboard", "teleop_twist_keyboard"]
