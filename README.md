@@ -10,9 +10,14 @@ Provides to Docker images to control your ROS 2 robot using
 ## Teleop:
 Run `docker compose run -it --rm teleop`
 
-## QT UI
-Run `docker compose run -it --rm ui`
-
 ## Playstation 4 DualShock controller
 Connect the controller via Bluetooth or USB and run 
 `docker compose run -it --rm teleop`
+
+## QT UI
+You might need to add xhost control for example: `xhost +local:docker`
+Run `docker compose run -it --rm ui`
+
+## QT UI
+You might need to add xhost control for example: `xhost +local:docker`
+Run `docker compose run -it --rm rviz`
