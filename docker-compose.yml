@@ -2,9 +2,6 @@ services:
   ds4:
     # Sony Playstation DualShock 4 controller
     image: brean/ds4-ros2:jazzy_001
-    build:
-      context: ./ds4/
-      dockerfile: ./Dockerfile
     privileged: True
     volumes:
       - /dev:/dev

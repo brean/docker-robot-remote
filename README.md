@@ -14,6 +14,8 @@ Run `docker compose run -it --rm teleop`
 Connect the controller via Bluetooth or USB and run 
 `docker compose run -it --rm teleop`
 
+(its just pulling/starting the [ROS2 DS4-Controller Docker image](https://github.com/brean/docker-ros2-ds4-controller))
+
 ## QT UI
 You might need to add xhost control for example: `xhost +local:docker`
 Run `docker compose run -it --rm ui`
